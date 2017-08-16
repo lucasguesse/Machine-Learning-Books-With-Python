@@ -20,26 +20,13 @@ class Array1D:
         self._data = value
 
     def __repr__(self):
-        def my_format(x):
-            if type(x) == bool:
-                return str(x)
-            else:
-                return '{}'.format(round(x, 6))
-
-        if len(self) > 10:
-            string = ', '.join(my_format(x) for x in self.data[:5]) + \
-                     '  ...,  ' + \
-                     ', '.join(my_format(x) for x in self.data[-5:])
-        else:
-            string = ', '.join(my_format(x) for x in self.data)
-        return 'Array1D([' + string + '])'
+        return 'Array1D(' + repr(self.data) + ')'
 
     def __len__(self):
         return len(self.data)
 
     def __iter__(self):
-        for d in self.data:
-            yield d
+        return iter(self.data)
 
     def __getitem__(self, index):
         if type(index) == int:
